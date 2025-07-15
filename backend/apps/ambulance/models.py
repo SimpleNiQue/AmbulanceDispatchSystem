@@ -3,7 +3,8 @@ from django.conf import settings
 from utils.mixins import Audit
 from apps.ambulance.utils import AmbulanceTypeEnum, StatusEnum
 from apps.hospital.models import Hospital
-
+from django.utils import timezone
+from datetime import timedelta
 
 class Ambulance(Audit):
     status = models.CharField(
@@ -25,10 +26,11 @@ class Ambulance(Audit):
         blank=True,
         related_name="ambulances_created"
     )
-
+    busy_until = models.DateTimeField(null=True, blank=True)
+    
 
 class AmbulanceLocation(Audit):
-    ambulance = models.ForeignKey(
+    ambulance = models.OneToOneField(
         Ambulance, on_delete=models.CASCADE, related_name="location"
     )
     latitude = models.CharField(max_length=255)

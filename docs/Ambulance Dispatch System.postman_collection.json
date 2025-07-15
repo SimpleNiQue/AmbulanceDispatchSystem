@@ -1,0 +1,2036 @@
+{
+	"info": {
+		"_postman_id": "a6605897-6bc8-4588-8620-536211391ef3",
+		"name": "Ambulance Dispatch System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20874435",
+		"_collection_link": "https://simple-r.postman.co/workspace/Team-Workspace~90ab07f6-6cf7-448d-8511-1d9f81c02928/collection/20874435-a6605897-6bc8-4588-8620-536211391ef3?action=share&source=collection_link&creator=20874435"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "sign up",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"simplenicky6@gmail.com\",\n    \"firstName\": \"chuckwu\",\n    \"lastName\": \"Olamide\",\n    \"password\": \"StrongPass123!\",\n    \"role\": \"patient\",\n    \"termsOfServiceAgreementChecked\": true\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/users/signup/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"users",
+								"signup",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "SUCCESS",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"simplenicky4@gmail.com\",\n    \"password\": \"StrongPass123!\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"role\": \"admin\",\n    \"termsOfServiceAgreementChecked\": true\n} ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/users/signup/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"signup",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 15 Jul 2025 07:06:08 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "77"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 201,\n    \"message\": \"Registration successful!\",\n    \"data\": null,\n    \"errors\": null\n}"
+						},
+						{
+							"name": "ALREADY EXISTS",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"simplenicky4@gmail.com\",\n    \"password\": \"StrongPass123!\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"role\": \"admin\",\n    \"termsOfServiceAgreementChecked\": true\n} ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/users/signup/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"signup",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 15 Jul 2025 07:06:31 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "91"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 400,\n    \"message\": \"A user with this email already exists.\",\n    \"data\": null,\n    \"errors\": null\n}"
+						},
+						{
+							"name": "BAD DATA",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"simplenicky5@gmail.com\",\n    \"password\": \"StrongPass123!\",\n    \"role\": \"admin\",\n    \"termsOfServiceAgreementChecked\": true\n} ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/users/signup/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"signup",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 15 Jul 2025 07:07:15 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "183"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 400,\n    \"message\": \"Last name is required\",\n    \"data\": null,\n    \"errors\": [\n        {\n            \"field\": \"firstName\",\n            \"message\": \"First name is required\"\n        },\n        {\n            \"field\": \"lastName\",\n            \"message\": \"Last name is required\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "log in",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"simplenicky2@gmail.com\",\n    \"password\": \"StrongPass123!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/users/login/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"users",
+								"login",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "SUCCESS",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"simplenicky2@gmail.com\",\n    \"password\": \"StrongPass123!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/users/login/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"login",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 15 Jul 2025 07:07:42 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "673"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"Login successful.\",\n    \"data\": {\n        \"role\": \"admin\",\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUyNjQ5NjYyLCJpYXQiOjE3NTI1NjMyNjIsImp0aSI6IjQ4MDMzYTRiZjcxYjQxNzA4MjdkYWJiMGY1NmY2YjRkIiwidXNlcl9pZCI6IjZkMGYxYzI0LTA2MjYtNDNiMS1hYTg2LThiYzMxMDk3NDU1NSJ9.wQelpVL0EDFU7lXxRDqmDIf_GMC6Q4ajc4P34lub1aY\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc1MjY0OTY2MiwiaWF0IjoxNzUyNTYzMjYyLCJqdGkiOiI5MjkwMmM1YWJiM2M0OThiYWQwOTRmYjg1MjI5M2M1NiIsInVzZXJfaWQiOiI2ZDBmMWMyNC0wNjI2LTQzYjEtYWE4Ni04YmMzMTA5NzQ1NTUifQ.XYwFgZMrknYOrGlbF_7Xeglb0seKvXjnMi4KrX-uj3Y\"\n    },\n    \"errors\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "reset password",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "fetch users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/v1/users/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "SUCCESS",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/users/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 15 Jul 2025 07:08:21 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1462"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"Users retrieved successfully.\",\n    \"data\": [\n        {\n            \"email\": \"simplenicky4@gmail.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\",\n            \"role\": \"admin\",\n            \"isVerified\": true,\n            \"isActive\": true,\n            \"dateCreated\": \"2025-07-15 08:06:08\",\n            \"lastUpdated\": \"2025-07-15 08:06:08\",\n            \"termsOfServiceAgreementChecked\": true\n        },\n        {\n            \"email\": \"simplenicky3@gmail.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\",\n            \"role\": \"admin\",\n            \"isVerified\": true,\n            \"isActive\": true,\n            \"dateCreated\": \"2025-07-15 08:05:14\",\n            \"lastUpdated\": \"2025-07-15 08:05:14\",\n            \"termsOfServiceAgreementChecked\": true\n        },\n        {\n            \"email\": \"simplenicky2@gmail.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\",\n            \"role\": \"admin\",\n            \"isVerified\": true,\n            \"isActive\": true,\n            \"dateCreated\": \"2025-07-15 00:57:03\",\n            \"lastUpdated\": \"2025-07-15 00:57:03\",\n            \"termsOfServiceAgreementChecked\": true\n        },\n        {\n            \"email\": \"simplenicky1@gmail.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\",\n            \"role\": \"admin\",\n            \"isVerified\": true,\n            \"isActive\": true,\n            \"dateCreated\": \"2025-07-15 00:53:39\",\n            \"lastUpdated\": \"2025-07-15 00:53:39\",\n            \"termsOfServiceAgreementChecked\": true\n        },\n        {\n            \"email\": \"simplenick01@gmail.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\",\n            \"role\": \"patient\",\n            \"isVerified\": false,\n            \"isActive\": true,\n            \"dateCreated\": \"2025-07-15 00:23:57\",\n            \"lastUpdated\": \"2025-07-15 00:23:57\",\n            \"termsOfServiceAgreementChecked\": true\n        },\n        {\n            \"email\": \"johndoe@example.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\",\n            \"role\": \"patient\",\n            \"isVerified\": false,\n            \"isActive\": true,\n            \"dateCreated\": \"2025-07-15 00:15:41\",\n            \"lastUpdated\": \"2025-07-15 00:15:41\",\n            \"termsOfServiceAgreementChecked\": true\n        }\n    ],\n    \"errors\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Hospital",
+			"item": [
+				{
+					"name": "Fetch all Hospitals",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/v1/hospitals/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"hospitals",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "NO HOSPITAL RECORD",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/hospitals/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"hospitals",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 15 Jul 2025 06:39:59 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"No Hpspital record\",\n    \"data\": null,\n    \"errors\": null\n}"
+						},
+						{
+							"name": "SUCCESS",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/hospitals/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"hospitals",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 15 Jul 2025 07:32:17 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "543"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"Hospitals retrieved successfully.\",\n    \"data\": [\n        {\n            \"id\": \"5d8c0786-5ea7-42ce-8c72-f8e6d645f794\",\n            \"createdBy\": \"John Doe\",\n            \"name\": \"Abuja Central Hospital\",\n            \"contactNumber\": \"+2348098765432\",\n            \"address\": \"Plot 12, Garki Area 11, Abuja\",\n            \"location\": {\n                \"longitude\": \"7.4898\",\n                \"latitude\": \"9.0399\"\n            }\n        },\n        {\n            \"id\": \"f8a360f8-9a2a-4c7f-b862-beb1a8531f9b\",\n            \"createdBy\": \"John Doe\",\n            \"name\": \"Sam and Kings Hospital\",\n            \"contactNumber\": \"+2348098765432\",\n            \"address\": \"Plot 12, Garki Area 11, Abuja\",\n            \"location\": {\n                \"longitude\": \"7.4878\",\n                \"latitude\": \"8.0399\"\n            }\n        }\n    ],\n    \"errors\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Fetch one Hospital",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/v1/hospitals/03e12fb3-13e4-4ff5-96e0-3d7a97813173",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"hospitals",
+								"03e12fb3-13e4-4ff5-96e0-3d7a97813173"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "SUCCESS",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/hospitals/03e12fb3-13e4-4ff5-96e0-3d7a97813173",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"hospitals",
+										"03e12fb3-13e4-4ff5-96e0-3d7a97813173"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 15 Jul 2025 08:04:22 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "310"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"Hospital retrieved successfully.\",\n    \"data\": {\n        \"id\": \"03e12fb3-13e4-4ff5-96e0-3d7a97813173\",\n        \"createdBy\": \"John Doe\",\n        \"name\": \"Sam and Kings Hospital\",\n        \"contactNumber\": \"+2348098765432\",\n        \"address\": \"Plot 12, Garki Area 11, Abuja\",\n        \"location\": {\n            \"longitude\": \"7.4878\",\n            \"latitude\": \"8.0399\"\n        }\n    },\n    \"errors\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Add a Hospital",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Sam and Kings Hospital\",\n    \"contactNumber\": \"+2348098765432\",\n    \"address\": \"Plot 12, Garki Area 11, Abuja\",\n    \"location\": {\n        \"longitude\": \"7.4878\",\n        \"latitude\": \"8.0399\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/hospitals/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"hospitals",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "NOT AUTHENTICATED",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Abuja Central Hospital\",\n    \"contactNumber\": \"+2348098765432\",\n    \"address\": \"Plot 12, Garki Area 11, Abuja\",\n    \"location\": {\n        \"longitude\": \"7.4898\",\n        \"latitude\": \"9.0399\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/hospitals/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"hospitals",
+										""
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 15 Jul 2025 06:55:23 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "WWW-Authenticate",
+									"value": "Token"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "98"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 401,\n    \"message\": \"Authentication credentials were not provided.\",\n    \"data\": null,\n    \"errors\": null\n}"
+						},
+						{
+							"name": "SUCCESS",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Sam and Kings Hospital\",\n    \"contactNumber\": \"+2348098765432\",\n    \"address\": \"Plot 12, Garki Area 11, Abuja\",\n    \"location\": {\n        \"longitude\": \"7.4878\",\n        \"latitude\": \"8.0399\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/hospitals/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"hospitals",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 15 Jul 2025 07:31:39 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "308"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 201,\n    \"message\": \"Hospital created successfully.\",\n    \"data\": {\n        \"id\": \"f8a360f8-9a2a-4c7f-b862-beb1a8531f9b\",\n        \"createdBy\": \"John Doe\",\n        \"name\": \"Sam and Kings Hospital\",\n        \"contactNumber\": \"+2348098765432\",\n        \"address\": \"Plot 12, Garki Area 11, Abuja\",\n        \"location\": {\n            \"longitude\": \"7.4878\",\n            \"latitude\": \"8.0399\"\n        }\n    },\n    \"errors\": null\n}"
+						},
+						{
+							"name": "DUPLICATE",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Sam and Kings Hospital\",\n    \"contactNumber\": \"+2348098765432\",\n    \"address\": \"Plot 12, Garki Area 11, Abuja\",\n    \"location\": {\n        \"longitude\": \"7.4878\",\n        \"latitude\": \"8.0399\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/hospitals/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"hospitals",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 15 Jul 2025 08:00:08 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "125"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 400,\n    \"message\": \"['A hospital with the same name, address, and location already exists.']\",\n    \"data\": null,\n    \"errors\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Edit Hospital details (complete)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Sam and Kings Hospital13\",\n    \"contactNumber\": \"+2348098765432\",\n    \"address\": \"Plot 12, Garki Area 11, Abuja\",\n    \"location\": {\n        \"longitude\": \"7.4878\",\n        \"latitude\": \"8.0399\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/hospitals/03e12fb3-13e4-4ff5-96e0-3d7a97813173/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"hospitals",
+								"03e12fb3-13e4-4ff5-96e0-3d7a97813173",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "SUCCESS",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Sam and Kings Hospital13\",\n    \"contactNumber\": \"+2348098765432\",\n    \"address\": \"Plot 12, Garki Area 11, Abuja\",\n    \"location\": {\n        \"longitude\": \"7.4878\",\n        \"latitude\": \"8.0399\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/hospitals/03e12fb3-13e4-4ff5-96e0-3d7a97813173/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"hospitals",
+										"03e12fb3-13e4-4ff5-96e0-3d7a97813173",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 15 Jul 2025 08:42:32 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "310"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"Hospital updated successfully.\",\n    \"data\": {\n        \"id\": \"03e12fb3-13e4-4ff5-96e0-3d7a97813173\",\n        \"createdBy\": \"John Doe\",\n        \"name\": \"Sam and Kings Hospital13\",\n        \"contactNumber\": \"+2348098765432\",\n        \"address\": \"Plot 12, Garki Area 11, Abuja\",\n        \"location\": {\n            \"longitude\": \"7.4878\",\n            \"latitude\": \"8.0399\"\n        }\n    },\n    \"errors\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Edit Hospital details (partial)",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Sam and Kings Hospital1\",\n    \"contactNumber\": \"+2348098765432\",\n    \"address\": \"Plot 12, Garki Area 11, Abuja\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/hospitals/f8a360f8-9a2a-4c7f-b862-beb1a8531f9b/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"hospitals",
+								"f8a360f8-9a2a-4c7f-b862-beb1a8531f9b",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "SUCCESS",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Sam and Kings Hospital1\",\n    \"contactNumber\": \"+2348098765432\",\n    \"address\": \"Plot 12, Garki Area 11, Abuja\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/hospitals/f8a360f8-9a2a-4c7f-b862-beb1a8531f9b/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"hospitals",
+										"f8a360f8-9a2a-4c7f-b862-beb1a8531f9b",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 15 Jul 2025 07:39:11 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "309"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"Hospital updated successfully.\",\n    \"data\": {\n        \"id\": \"f8a360f8-9a2a-4c7f-b862-beb1a8531f9b\",\n        \"createdBy\": \"John Doe\",\n        \"name\": \"Sam and Kings Hospital1\",\n        \"contactNumber\": \"+2348098765432\",\n        \"address\": \"Plot 12, Garki Area 11, Abuja\",\n        \"location\": {\n            \"longitude\": \"7.4878\",\n            \"latitude\": \"8.0399\"\n        }\n    },\n    \"errors\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete a Hospital",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/v1/hospitals/5d8c0786-5ea7-42ce-8c72-f8e6d645f794/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"hospitals",
+								"5d8c0786-5ea7-42ce-8c72-f8e6d645f794",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "SUCCESS",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/hospitals/5d8c0786-5ea7-42ce-8c72-f8e6d645f794/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"hospitals",
+										"5d8c0786-5ea7-42ce-8c72-f8e6d645f794",
+										""
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 15 Jul 2025 08:02:27 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "83"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 204,\n    \"message\": \"Hospital deleted successfully.\",\n    \"data\": null,\n    \"errors\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Ambulance",
+			"item": [
+				{
+					"name": "Fetch all Ambulances",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/v1/ambulance/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"ambulance",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "NO DATA",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/ambulance/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"ambulance",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 15 Jul 2025 08:07:43 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"No Ambulance found\",\n    \"data\": null,\n    \"errors\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Fetch one Ambulance",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/v1/ambulance/b365c75d-cdb8-4eb4-8b56-cb0aa8de9bca/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"ambulance",
+								"b365c75d-cdb8-4eb4-8b56-cb0aa8de9bca",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "SUCCESS",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/ambulance/b365c75d-cdb8-4eb4-8b56-cb0aa8de9bca/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"ambulance",
+										"b365c75d-cdb8-4eb4-8b56-cb0aa8de9bca",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 15 Jul 2025 08:43:44 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "527"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"Ambulance retrieved successfully.\",\n    \"data\": {\n        \"id\": \"b365c75d-cdb8-4eb4-8b56-cb0aa8de9bca\",\n        \"status\": \"Available\",\n        \"ambulanceType\": \"Basic Life Support\",\n        \"lastAssigned\": null,\n        \"hospital\": {\n            \"id\": \"03e12fb3-13e4-4ff5-96e0-3d7a97813173\",\n            \"createdBy\": \"John Doe\",\n            \"name\": \"Sam and Kings Hospital13\",\n            \"contactNumber\": \"+2348098765432\",\n            \"address\": \"Plot 12, Garki Area 11, Abuja\",\n            \"location\": {\n                \"longitude\": \"7.4878\",\n                \"latitude\": \"8.0399\"\n            }\n        },\n        \"createdBy\": \"John Doe\",\n        \"location\": {\n            \"longitude\": \"7.49508\",\n            \"latitude\": \"9.05785\"\n        }\n    },\n    \"errors\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Add new Ambulance",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"Available\",\n    \"ambulanceType\": \"Basic Life Support\",\n    \"hospitalId\": \"03e12fb3-13e4-4ff5-96e0-3d7a97813173\",\n    \"location\": {\n        \"longitude\": \"7.49508\",\n        \"latitude\": \"9.05785\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/ambulance/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"ambulance",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "SUCCESS",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"status\": \"Available\",\n    \"ambulanceType\": \"Basic Life Support\",\n    \"hospitalId\": \"03e12fb3-13e4-4ff5-96e0-3d7a97813173\",\n    \"location\": {\n        \"longitude\": \"7.49508\",\n        \"latitude\": \"9.05785\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/ambulance/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"ambulance",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 15 Jul 2025 08:29:45 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "523"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 201,\n    \"message\": \"Ambulance created successfully.\",\n    \"data\": {\n        \"id\": \"2180e9d7-5a43-4a43-b658-69f3878643d5\",\n        \"status\": \"Available\",\n        \"ambulanceType\": \"Basic Life Support\",\n        \"lastAssigned\": null,\n        \"hospital\": {\n            \"id\": \"03e12fb3-13e4-4ff5-96e0-3d7a97813173\",\n            \"createdBy\": \"John Doe\",\n            \"name\": \"Sam and Kings Hospital\",\n            \"contactNumber\": \"+2348098765432\",\n            \"address\": \"Plot 12, Garki Area 11, Abuja\",\n            \"location\": {\n                \"longitude\": \"7.4878\",\n                \"latitude\": \"8.0399\"\n            }\n        },\n        \"createdBy\": \"John Doe\",\n        \"location\": {\n            \"longitude\": \"7.49508\",\n            \"latitude\": \"9.05785\"\n        }\n    },\n    \"errors\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Edit an Ambulance",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"Busy\",\n    \"ambulanceType\": \"Basic Life Support\",\n    \"hospitalId\": \"03e12fb3-13e4-4ff5-96e0-3d7a97813173\",\n    \"location\": {\n        \"longitude\": \"7.49508\",\n        \"latitude\": \"9.05785\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/ambulance/b365c75d-cdb8-4eb4-8b56-cb0aa8de9bca/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"ambulance",
+								"b365c75d-cdb8-4eb4-8b56-cb0aa8de9bca",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "SUCCESS",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"status\": \"Busy\",\n    \"ambulanceType\": \"Basic Life Support\",\n    \"hospitalId\": \"03e12fb3-13e4-4ff5-96e0-3d7a97813173\",\n    \"location\": {\n        \"longitude\": \"7.49508\",\n        \"latitude\": \"9.05785\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/ambulance/b365c75d-cdb8-4eb4-8b56-cb0aa8de9bca/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"ambulance",
+										"b365c75d-cdb8-4eb4-8b56-cb0aa8de9bca",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 15 Jul 2025 08:52:31 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "520"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"Ambulance updated successfully.\",\n    \"data\": {\n        \"id\": \"b365c75d-cdb8-4eb4-8b56-cb0aa8de9bca\",\n        \"status\": \"Busy\",\n        \"ambulanceType\": \"Basic Life Support\",\n        \"lastAssigned\": null,\n        \"hospital\": {\n            \"id\": \"03e12fb3-13e4-4ff5-96e0-3d7a97813173\",\n            \"createdBy\": \"John Doe\",\n            \"name\": \"Sam and Kings Hospital13\",\n            \"contactNumber\": \"+2348098765432\",\n            \"address\": \"Plot 12, Garki Area 11, Abuja\",\n            \"location\": {\n                \"longitude\": \"7.4878\",\n                \"latitude\": \"8.0399\"\n            }\n        },\n        \"createdBy\": \"John Doe\",\n        \"location\": {\n            \"longitude\": \"7.49508\",\n            \"latitude\": \"9.05785\"\n        }\n    },\n    \"errors\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete an Ambulance",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/v1/ambulance/b365c75d-cdb8-4eb4-8b56-cb0aa8de9bca/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"ambulance",
+								"b365c75d-cdb8-4eb4-8b56-cb0aa8de9bca",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "SUCCESS",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/ambulance/b365c75d-cdb8-4eb4-8b56-cb0aa8de9bca/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"ambulance",
+										"b365c75d-cdb8-4eb4-8b56-cb0aa8de9bca",
+										""
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 15 Jul 2025 08:56:35 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 204,\n    \"message\": \"Ambulance deleted successfully.\",\n    \"data\": null,\n    \"errors\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Emergency Request",
+			"item": [
+				{
+					"name": "Fetch all emergency requests",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/v1/emergency-requests/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"emergency-requests",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "NO EMERGENCY REQUEST",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/emergency-requests/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"emergency-requests",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 15 Jul 2025 10:33:31 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, PUT, PATCH, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "73"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"No emergency request\",\n    \"data\": null,\n    \"errors\": null\n}"
+						},
+						{
+							"name": "SUCCESS",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/emergency-requests/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"emergency-requests",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 15 Jul 2025 10:41:16 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, PUT, PATCH, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "257"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"All emergency requests retrieved successfully.\",\n    \"data\": [\n        {\n            \"id\": \"121fba59-0612-4001-aba8-2d71e58cd399\",\n            \"severity\": \"high\",\n            \"ambulance\": \"2180e9d7-5a43-4a43-b658-69f3878643d5\",\n            \"isResolved\": false,\n            \"responseTimeSeconds\": null\n        }\n    ],\n    \"errors\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Create an emergency request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"severity\": \"high\",\n    \"location\": {\n        \"latitude\": \"9.05785\",\n        \"longitude\": \"7.49508\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/emergency-requests/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"emergency-requests",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "SUCCESS",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"severity\": \"high\",\n    \"location\": {\n        \"latitude\": \"9.05785\",\n        \"longitude\": \"7.49508\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/emergency-requests/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"emergency-requests",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 15 Jul 2025 10:39:02 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, PUT, PATCH, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "273"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 201,\n    \"message\": \"Emergency request submitted and ambulance assigned successfully.\",\n    \"data\": {\n        \"id\": \"121fba59-0612-4001-aba8-2d71e58cd399\",\n        \"severity\": \"high\",\n        \"ambulance\": \"2180e9d7-5a43-4a43-b658-69f3878643d5\",\n        \"isResolved\": false,\n        \"responseTimeSeconds\": null\n    },\n    \"errors\": null\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{accessToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

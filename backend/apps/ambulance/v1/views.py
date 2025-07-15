@@ -1,10 +1,11 @@
 from rest_framework import status, viewsets
 from rest_framework.permissions import AllowAny
 from rest_framework.exceptions import NotFound
+from django.db import transaction
 
 from apps.ambulance.models import Ambulance
 from apps.ambulance.v1.serializers import AmbulanceSerializer
-from utils.permissions import IsAdmin, IsPatient
+from utils.permissions import IsAdmin
 from utils.responses import api_response
 
 
@@ -15,7 +16,7 @@ class AmbulanceViewSet(viewsets.ModelViewSet):
     def get_permissions(self):
         if self.request.method == "GET":
             return [AllowAny()]
-        return [IsPatient(), IsAdmin()]
+        return [IsAdmin()]
 
     def perform_create(self, serializer):
         serializer.save(created_by=self.request.user)
@@ -23,11 +24,7 @@ class AmbulanceViewSet(viewsets.ModelViewSet):
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
         serializer = self.get_serializer(queryset, many=True)
-        if len(queryset) < 1:
-            message="No Ambulance found"
-        else:
-            message="Ambulances retrieved successfully."
-            
+        message = "No Ambulance found" if len(queryset) < 1 else "Ambulances retrieved successfully."
         return api_response(
             status=status.HTTP_200_OK,
             message=message,
@@ -39,7 +36,6 @@ class AmbulanceViewSet(viewsets.ModelViewSet):
             instance = self.get_object()
         except Ambulance.DoesNotExist:
             raise NotFound("Ambulance not found.")
-
         serializer = self.get_serializer(instance)
         return api_response(
             status=status.HTTP_200_OK,
@@ -50,7 +46,8 @@ class AmbulanceViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        self.perform_create(serializer)
+        with transaction.atomic():
+            self.perform_create(serializer)
         return api_response(
             status=status.HTTP_201_CREATED,
             message="Ambulance created successfully.",
@@ -62,7 +59,8 @@ class AmbulanceViewSet(viewsets.ModelViewSet):
         instance = self.get_object()
         serializer = self.get_serializer(instance, data=request.data, partial=partial)
         serializer.is_valid(raise_exception=True)
-        self.perform_update(serializer)
+        with transaction.atomic():
+            self.perform_update(serializer)
         return api_response(
             status=status.HTTP_200_OK,
             message="Ambulance updated successfully.",
@@ -71,7 +69,8 @@ class AmbulanceViewSet(viewsets.ModelViewSet):
 
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
-        self.perform_destroy(instance)
+        with transaction.atomic():
+            self.perform_destroy(instance)
         return api_response(
             status=status.HTTP_204_NO_CONTENT,
             message="Ambulance deleted successfully.",

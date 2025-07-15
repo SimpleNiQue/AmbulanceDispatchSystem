@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from apps.ambulance.models import Ambulance, AmbulanceLocation
 from apps.hospital.models import Hospital
+from apps.ambulance.utils import StatusEnum, AmbulanceTypeEnum
 from apps.hospital.v1.serializers import HospitalSerializer
 from apps.ambulance.v1.services import (
     create_ambulance_with_location,
@@ -25,6 +26,10 @@ class AmbulanceSerializer(serializers.ModelSerializer):
         write_only=True,
         source="hospital"
     )
+    lastAssigned = serializers.DateTimeField(source="last_assigned", required=False)
+    ambulanceType = serializers.ChoiceField(choices=AmbulanceTypeEnum.options_list(), source="ambulance_type")
+    status = serializers.ChoiceField(choices=StatusEnum.options_list())
+    busyUntil = serializers.DateTimeField(source="busy_until", required=False)
     createdBy = serializers.StringRelatedField(read_only=True, source="created_by")
 
     class Meta:
@@ -32,12 +37,13 @@ class AmbulanceSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "status",
-            "ambulance_type",
-            "last_assigned",
-            "hospital",
+            "ambulanceType",
+            "lastAssigned",
             "hospitalId",
-            "createdBy",
             "location",
+            "busyUntil",
+            "createdBy",
+            "hospital",
         ]
 
     def create(self, validated_data):
