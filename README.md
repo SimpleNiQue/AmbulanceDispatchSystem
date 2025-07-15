@@ -3,6 +3,7 @@
 This is a Django-based application for managing and dispatching ambulances for emergency requests.
 
 ## Setup Instructions
+**Please install the python interpreter (Just incase you don't have it yet)**
 
 ### For Linux and Mac Users
 
@@ -54,6 +55,10 @@ This is a Django-based application for managing and dispatching ambulances for e
     ```
 
 7.  **Run the database migrations:**
+
+    ```bash
+    python manage.py makemigrations
+    ```
 
     ```bash
     python manage.py migrate
@@ -115,6 +120,10 @@ This is a Django-based application for managing and dispatching ambulances for e
     ```
 
 7.  **Run the database migrations:**
+
+    ```cmd
+    python manage.py makemigrations
+    ```
 
     ```cmd
     python manage.py migrate

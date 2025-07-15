@@ -3,8 +3,6 @@ from django.conf import settings
 from utils.mixins import Audit
 from apps.ambulance.utils import AmbulanceTypeEnum, StatusEnum
 from apps.hospital.models import Hospital
-from django.utils import timezone
-from datetime import timedelta
 
 class Ambulance(Audit):
     status = models.CharField(
