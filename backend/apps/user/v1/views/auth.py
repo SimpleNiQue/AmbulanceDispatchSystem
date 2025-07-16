@@ -18,6 +18,7 @@ from apps.user.v1.serializers.auth import (
     LoginSerializer,
     PasswordResetTokenGenerator,
     RefreshTokenSerializer,
+    RequestPasswordResetOTPSerializer,
     ResendEmailSerializer,
     ResetPasswordSerializer,
     SetNewPasswordSerializer,
@@ -218,6 +219,30 @@ class SetNewPasswordAPIView(generics.GenericAPIView):
         return api_response(message="Password reset successful.")
 
 
+class RequestPasswordResetOTPView(APIView):
+    permission_classes = [AllowAny]
+    serializer_class = RequestPasswordResetOTPSerializer
+
+    def post(self, request: Request) -> Response:
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data["user"]
+
+        try:
+            email_service.send_password_reset_email(user)
+            return api_response(
+                status=status.HTTP_200_OK,
+                message="Password reset OTP sent successfully.",
+            )
+        except Exception as e:
+            handle_exception(
+                "Failed to send password reset OTP",
+                CustomExceptions.EMAIL_ERROR,
+                logger_name=__name__,
+                exception=e,
+            )
+
+
 class ValidateOTPAndResetPassword(generics.GenericAPIView):
     permission_classes = [AllowAny]
     serializer_class = ResetPasswordSerializer
@@ -228,8 +253,8 @@ class ValidateOTPAndResetPassword(generics.GenericAPIView):
             str.strip,
             [
                 request.data.get("email", ""),
-                request.data.get("auth_code", ""),
-                request.data.get("new_password", ""),
+                request.data.get("authCode", ""),
+                request.data.get("newPassword", ""),
             ],
         )
 

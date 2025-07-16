@@ -190,6 +190,22 @@ class ResetPasswordSerializer(serializers.Serializer):
     auth_code = serializers.CharField(max_length=6)
     new_password = serializers.CharField(min_length=8)
 
+
+class RequestPasswordResetOTPSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+
+    def validate(self, attrs):
+        email = attrs.get("email")
+        user = User.objects.filter(email=email).first()
+
+        if not user:
+            raise ValidationError(
+                {"email": "User with the provided email does not exist."}
+            )
+
+        return {"user": user}
+
+
 class EmailVerifySerializer(serializers.Serializer):
     token = serializers.CharField()
 

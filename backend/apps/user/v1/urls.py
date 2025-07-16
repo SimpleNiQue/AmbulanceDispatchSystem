@@ -9,6 +9,7 @@ from apps.user.v1.views.auth import (
     PasswordTokenCheckAPI,
     SetNewPasswordAPIView,
     ValidateOTPAndResetPassword,
+    RequestPasswordResetOTPView,
     GetUsersView
 )
 
@@ -26,5 +27,6 @@ urlpatterns = [
         name="password-token-check",
     ),
     path("password-reset/confirm/", SetNewPasswordAPIView.as_view(), name="password-reset-confirm"),
-    path("password-reset/otp/", ValidateOTPAndResetPassword.as_view(), name="validate-otp-password-reset"),
+    path("reset-password/validate", ValidateOTPAndResetPassword.as_view(), name="validate-otp-password-reset"),
+    path("reset-password", RequestPasswordResetOTPView.as_view(), name="request-password-reset-otp"),
 ]

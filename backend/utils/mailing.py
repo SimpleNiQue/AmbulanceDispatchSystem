@@ -53,21 +53,14 @@ class EmailService:
 
         return f"{request.scheme}://{get_current_site(request).domain}/user/verify/?token={token}"
 
-    def send_password_reset_email(self, request, user_obj):
-        domain = get_current_site(request).domain
-        scheme = request.scheme
-
-        uidb64 = urlsafe_base64_encode(str(user_obj.id).encode())
-        token = PasswordResetTokenGenerator().make_token(user_obj)
+    def send_password_reset_email(self, user):
         reset_code = get_random_string(length=6, allowed_chars="0123456789")
-        cache.set(f"password_reset_code_{user_obj.email}", reset_code, timeout=900)
+        cache.set(f"password_reset_code_{user.email}", reset_code, timeout=900)
 
-        reset_url = f"{scheme}://{domain}{reverse('password-reset-confirm', kwargs={'uidb64': uidb64, 'token': token})}"
-
-        context = {"reset_url": reset_url, "reset_code": reset_code}
+        context = {"reset_code": reset_code, "first_name": user.first_name}
         self.send_email(
             subject="Reset Your Password",
-            recipient_email=user_obj.email,
+            recipient_email=user.email,
             template_name=f"{self.user_template}/password_reset.html",
             context=context,
         )
