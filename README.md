@@ -184,20 +184,8 @@ The API is versioned and accessible under the `/v1/` prefix.
     ```bash
     pip install -r requirements.txt
     ```
-6.  **Create a `.env` file** from the `.env.example` and fill in the required environment variables.(For testing purposes and simplicity, copy and paste this values below)
-    ```bash
-    SECRET_KEY="django-insecure-5_@2__!@=xd1-891#q7cq(6t$bfbo=i&2lm5(bf_7)lab2eh*("
-    DEBUG="true"
-
-    EMAIL_BACKEND="django.core.mail.backends.smtp.EmailBackend"
-    EMAIL_HOST="smtp.gmail.com"
-    EMAIL_PORT=587
-    EMAIL_USE_TLS=True
-    EMAIL_HOST_USER="simpleneek@gmail.com"
-    EMAIL_HOST_PASSWORD="rpewmcchitpgraiz"
-    DEFAULT_FROM_EMAIL="simpleneek@gmail.com"
-
-    ```
+6.  **Create a `.env` file** from the `.env.example` and fill in the required environment variables.
+    
 7.  **Create database migrations:**
     ```bash
     python manage.py makemigrations
